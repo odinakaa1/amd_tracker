@@ -136,4 +136,5 @@ class Location extends CI_Controller {
 		return $countries = $this->location_model->list_countries();
 		
 	}
+	
 }

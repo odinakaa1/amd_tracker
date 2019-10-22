@@ -21,7 +21,7 @@ class Location_model extends CI_Model{
     }
 
     function list_countries(){
-        return $query = $this->db->query("SELECT * FROM `state`");   
+        return $query = $this->db->query("SELECT * FROM `country`");   
     
     }
 }

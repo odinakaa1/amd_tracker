@@ -1,7 +1,7 @@
 
 
     <div class="container">
-        <img src="<?php echo base_url('assets/img/logo.png')?>" alt="AMD Logo">
+        <img src="<?php echo base_url('img/logo.png')?>" alt="AMD Logo">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">

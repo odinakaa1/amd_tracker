@@ -28,7 +28,7 @@ class Users extends CI_Controller {
         if ($this->form_validation->run() == FALSE)
         {  $data['title'] = " Login Page";
 			$this->load->view('templates/admin/header', $data);
-			$this->load->view('templates/admin/nav');
+			// $this->load->view('templates/admin/nav');
             $this->load->view('login');
 			$this->load->view('templates/admin/footer');
             

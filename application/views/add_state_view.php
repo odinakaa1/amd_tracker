@@ -17,13 +17,11 @@
                 <label for="state">State Name</label>
                     <input type="text" name="state" id="state" class="form-control" placeholder="please enter state name" value="<?php echo set_value('state');?>" ><br>
                     <select name="country" id="" class="form-control">
-                        <!-- <option value="" selected="">select...</option>
-                        <option value="1">Nigeria</option>
-                        <option value="2">Togo</option> -->
+                       
                         <option value="" selected="">select...</option>
                         <?php foreach ($countries->result_array() as $row)
                         {?>
-                        <option value="<?php echo $row['country_id']; ?>"><?php  echo country_name_from_id($row['country_id']);
+                        <option value="<?php echo $row['id']; ?>"><?php  echo country_name_from_id($row['id']);
                         }?></option>          
                     </select><br>
                     <input type="submit" class="form-control btn-primary" value="Submit">
