@@ -22,8 +22,9 @@ class Ticket extends CI_Controller {
 		// pageProtect();
 		// $this->load->view('templates/admin/header');
 		// $this->load->view('templates/admin/nav');
-        // $this->load->view('admin_home_view');
-        $this->load->view('templates/admin/header');
+		// $this->load->view('admin_home_view');
+		$data["title"] = "Advance Medisystem Engineers | Tickets";
+        $this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/nav');
         $this->load->view('all_tickets_view');
         $this->load->view('templates/admin/footer');

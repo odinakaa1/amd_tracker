@@ -9,14 +9,14 @@
         <!-- /.col-lg-12 -->
     </div>
     
-     <!-- <div class="col-lg-4"> -->
+     <div class="col-lg-4">
      <?php echo form_open()?>
      <label for="country">Country Name</label>
     <input type="text" id="country" class="form-control" placeholder="please a country name" name="country_name"><br>
     <input type="submit" class="form-control btn-primary" value="Submit">
-     <!-- </div> -->
+     </div>
             <!-- /.row -->
-        <!-- /#page-wrapper -->
+    </form>    <!-- /#page-wrapper -->
 </div>
     <!-- /#wrapper -->
    

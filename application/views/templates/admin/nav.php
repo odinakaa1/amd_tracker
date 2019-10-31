@@ -266,7 +266,7 @@
                             <a href="#"><i class="fa fa-print fa-fw"></i> Tickets<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">All Tickets</a>
+                                    <a href="<?php echo base_url("ticket")?>">All Tickets</a>
                                 </li>
 
                                 <!-- <li>
@@ -300,10 +300,10 @@
                             <a href="#"><i class="fa fa-building fa-fw"></i> Facilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php  echo base_url('location/all_country')?>">All Facilities</a>
+                                    <a href="<?php  echo base_url('location/all_facilities')?>">All Facilities</a>
                                 </li>
 
-                                <li> <a href="<?php  echo base_url('location/all_state')?>">Add</a>
+                                <li> <a href="<?php  echo base_url('location/add_facility')?>">Add</a>
                                 </li>
 
                                 <li> <a href="<?php  echo base_url('location/all_lga')?>">Delete</a>
@@ -316,13 +316,17 @@
                             <a href="#"><i class="fa fa-microchip fa-fw""></i>Analysers <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">All Analysers</a>
+                                <a href="<?php echo base_url('analysers')?>">All Analysers</a>
                                 </li>
-
                                 <li>
-                                    <a href="">Add Analyser</a>
+                                    
+                                    <a href="<?php echo base_url('analysers/all_brands')?>">Brands</a>
                                 </li>
-
+                                
+                                <li>
+                                    
+                                    <a href="<?php echo base_url('analysers/models')?>">Models</a>
+                                </li>
                                 
                             </ul>
                             <!-- /.nav-second-level -->

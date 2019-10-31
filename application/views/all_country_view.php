@@ -25,10 +25,16 @@
                                             <th>Name</th>                                          
                                         </tr>
                                     </thead>
+                                    <?php
+                                    $i= 0;
+                                    foreach($countries->result_array() as $row){
+                                    $i++;
+                                       ?>
                                     <tbody>
                                         <tr class="">
-                                            <td>1</td>
-                                            <td><a href="tickets_more_info">Nigeria</a></td> 
+                                            <td><?php echo $i;?></td>
+                                            <td><a href="tickets_more_info/<?php echo $row["id"]?>"><?php echo $row["country_name"]?></a></td> 
+                                            
                                             <td>
                                             <div class="dropdown">
                                                 <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,44 +49,8 @@
                                                 </ul>
                                             </div>
                                             </td>                                           
-                                        </tr>   
-                                        <tr class="odd gradeX">
-                                            <td>2</td>
-                                            <td><a href="tickets_more_info">New York</a></td>
-                                            <td>
-                                            <div class="dropdown">
-                                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action
-                                                    <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                               
-                                                  
-                                                 <li><i class="fa fa-pencil" ><a href="" >Edit</a></i></li>
-                                                 <li><i class="fa fa-minus"><a href="">Delete</a></i></li>
-                                                </ul>
-                                            </div>
-                                            </td>
-                                        </tr> 
-                                        
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td><a href="tickets_more_info">Ghana</a></td>
-                                            <td>
-                                            <div class="dropdown">
-                                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action
-                                                    <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                               
-                                                  
-                                                 <li><i class="fa fa-pencil" ><a href="<?php echo base_url("locations/addcountry")?>" >Edit</a></i></li>
-                                                 <li><i class="fa fa-minus"><a href="">Delete</a></i></li>
-                                                </ul>
-                                            </div>
-                                            </td>
-                                        </tr>  
+                                        </tr>                                      
+                                        <?php  }?>
                                       
                                     </tbody>
                                 </table>

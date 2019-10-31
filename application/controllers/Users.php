@@ -36,10 +36,8 @@ class Users extends CI_Controller {
         else
         {
                 //$this->load->view('admin');
-                redirect('admin');
-        }
-        
-       
+                redirect('location');
+        }   
     }
     
     public function username_check($email, $password){ 
@@ -51,11 +49,12 @@ class Users extends CI_Controller {
             {
             $this->session->user_id = $query->row()->id;
             return TRUE;
-            die();
-            }
-            else{
+            } else{
                 return FALSE;
             }
+           
+        } else{
+            return FALSE;
         }
            
         

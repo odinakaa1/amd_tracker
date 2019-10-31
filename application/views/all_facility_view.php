@@ -14,7 +14,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                        <a href="<?php echo base_url("location/add_lga")?>" class="btn btn-primary">Add LGA</a>
+                        <a href="<?php echo base_url("location/add_facility")?>" class="btn btn-primary">Add Facility</a>
                         <br><br>
                             
                             <div class="table-responsive">
@@ -24,20 +24,24 @@
                                             <th>S/N</th>
                                             <th>Country</th>
                                             <th>State</th>
-                                            <th>LGA</th>    
+                                            <th>LGA</th>
+                                            <th>Facility Name</th>  
+                                            <th>Facility Code</th>    
                                             <th>Action</th>                                       
                                         </tr>
                                     </thead>
                                    
                                     <tbody>
-                                    <?php  $i = 0;foreach($lga->result_array() as $row){
+                                    <?php  $i = 0;foreach($facility->result_array() as $row){
                                       $i++;
                                     ?>
                                         <tr class="">
                                             <td><?php echo $i;?></td>
                                             <td><?php echo country_name_from_id($row["country_id"]);?></td> 
                                             <td><a href="tickets_more_info"><?php echo state_name_from_id($row["state_id"]);?></a></td> 
-                                            <td><a href="tickets_more_info"><?php echo $row["lga_name"];?></a></td> 
+                                            <td><a href="tickets_more_info"><?php echo lga_name_from_id($row["lga_id"]);?></a></td>
+                                            <td><?php echo $row["facility_name"];?></td> 
+                                            <td><?php echo $row["facility_code"];?></td> 
                                             <td>
                                             <div class="dropdown">
                                                 <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

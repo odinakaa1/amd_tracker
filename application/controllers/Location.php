@@ -28,10 +28,7 @@ class Location extends CI_Controller {
 	public function index()
 		
 	{   
-		// pageProtect();
-		// $this->load->view('templates/admin/header');
-		// $this->load->view('templates/admin/nav');
-		// $this->load->view('admin_home_view');
+		pageProtect();
 		$data['title'] = " All Locations";
         $this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/nav');
@@ -43,10 +40,11 @@ class Location extends CI_Controller {
 		
 	{   
 		pageProtect();
+		$data["countries"] = $this->list_countries();
 		$data['title'] = " All Country";
         $this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/nav');
-        $this->load->view('all_country_view');
+        $this->load->view('all_country_view', $data);
         $this->load->view('templates/admin/footer');
 	}
 
@@ -54,6 +52,7 @@ class Location extends CI_Controller {
 		
 	{   
 		pageProtect();
+		$data["states"] = $this->list_states();
 		$data['title'] = " All state";
         $this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/nav');
@@ -64,7 +63,9 @@ class Location extends CI_Controller {
 	public function all_lga()
 		
 	{   
+		
 		pageProtect();
+		$data["lga"] = $this->list_lga();
 		$data['title'] = " All LGA";
         $this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/nav');
@@ -132,9 +133,97 @@ class Location extends CI_Controller {
 			}
 		// echo country_exist($country_name);
 	}
-	public function list_countries(){
-		return $countries = $this->location_model->list_countries();
+	function list_countries(){
+		return $this->location_model->list_countries();
 		
 	}
 	
+	function list_states(){
+		return $this->location_model->list_states();
+	}
+
+	function list_lga(){
+		return $this->location_model->list_lga();
+	}
+
+	public function add_lga(){
+
+		$this->form_validation->set_rules('lga', 'LGA', 'required|is_unique[lga.lga_name]', array('is_unique'=>'LGA already Exist'));  
+		$this->form_validation->set_rules('state', 'state', 'required'); 
+		$this->form_validation->set_rules('country', 'country', 'required');  
+
+		$data["countries"] = $this->location_model->list_countries();
+		$data["states"] = $this->location_model->list_states();
+		if($this->form_validation->run()==FALSE){
+		$data["countries"] = $this->location_model->list_countries();
+		$data["states"] = $this->location_model->list_states();
+		$data['title'] = " Add LGA";
+        $this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/nav');
+        $this->load->view('add_lga_view', $data);
+        $this->load->view('templates/admin/footer');
+		}else{
+			 $lga["lga_name"] = $this->input->post('lga');
+			 $lga["state_id"] = $this->input->post('state');
+			 $lga["country_id"] = $this->input->post('country');
+			$this->location_model->add_lga($lga);
+			$this->session->set_flashdata('msg', '<div class="alert alert-success col-xs-3"> Country Added Successfully </div>
+			');
+			redirect(site_url('location/add_lga'));
+		}
+	}
+
+	public function add_facility(){
+
+		$this->form_validation->set_rules('lga', 'LGA', 'required');  
+		$this->form_validation->set_rules('facility_name', 'facility name', 'required');  
+		$this->form_validation->set_rules('state', 'state', 'required'); 
+		$this->form_validation->set_rules('country', 'country', 'required');
+		$this->form_validation->set_rules('contact_person_name', 'Contact Person Phone', 'required');
+		$this->form_validation->set_rules('facility_prefix', 'Contact Person Prefix', 'required'); 
+
+		$this->form_validation->set_rules('address', 'Facility Address and house number', 'required'); 
+
+		
+		if($this->form_validation->run()==FALSE){
+			
+		$data["lga"] = $this->location_model->list_lga();
+		$data["countries"] = $this->location_model->list_countries();
+		$data["states"] = $this->location_model->list_states();
+		$data['title'] = " All Facilities";
+        $this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/nav');
+        $this->load->view('add_facility_view', $data);
+        $this->load->view('templates/admin/footer');
+		}else{
+			 $add_facility["lga_id"] = $this->input->post('lga');
+			 $add_facility["facility_name"] = $this->input->post('facility_name');
+			 $add_facility["state_id"] = $this->input->post('state');
+			 $add_facility["country_id"] = $this->input->post('country');
+			 $add_facility["contact_person"] = $this->input->post('contact_person_name');
+			 $add_facility["contact_email"] = $this->input->post('contact_person_email');
+			 $add_facility["contact_phone"] = $this->input->post('contact_person_phone');
+			 $add_facility["address"] = $this->input->post('address');
+			 $add_facility["facility_code"] = strtoupper($this->input->post('facility_prefix')."/".$this->create_facility_code());
+			$this->location_model->add_facility($add_facility);
+			$this->session->set_flashdata('msg', '<div class="alert alert-success col-xs-3"> Facility Added Successfully </div>
+			');
+			redirect(site_url('location/add_facility'));
+		}
+	}
+
+	public function all_facilities(){
+		
+		$data["facility"] = $this->location_model->list_facility();
+		
+		$data['title'] = " All Facilities";
+        $this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/nav');
+        $this->load->view('all_facility_view', $data);
+        $this->load->view('templates/admin/footer');
+	}
+
+	 function create_facility_code(){
+		return $this->location_model->next_facility_auto_increament();
+	}
 }

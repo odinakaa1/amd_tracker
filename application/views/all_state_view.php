@@ -27,10 +27,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php  $i = 0;foreach($states->result_array() as $row){
+                                      $i++;
+                                    ?>
                                         <tr class="">
-                                            <td>1</td>
-                                            <td><a href="tickets_more_info">Lagos</a></td> 
-                                            <td><a href="tickets_more_info">Nigeria</a></td> 
+                                            <td><?php echo $i;?></td>
+                                            <td><a href="tickets_more_info/<?php echo $row["id"];?>"><?php echo $row["state_name"];?></a></td> 
+                                            <td><?php echo country_name_from_id($row["country_id"]);?></a></td> 
                                             <td>
                                             <div class="dropdown">
                                                 <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,29 +49,7 @@
                                             </div>
                                             </td>                                           
                                         </tr>   
-                                        <tr class="">
-                                            <td>2</td>
-                                            <td><a href="tickets_more_info">Abuja</a></td> 
-                                            <td><a href="tickets_more_info">Nigeria</a></td> 
-                                            <td>
-                                            <div class="dropdown">
-                                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action
-                                                    <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                               
-                                                  
-                                                 <li><i class="fa fa-pencil" ><a href="" >Edit</a></i></li>
-                                                 <li><i class="fa fa-minus"><a href="">Delete</a></i></li>
-                                                </ul>
-                                            </div>
-                                            </td>                                           
-                                        </tr>   
-                                        
-                                        
-                                        
-                                      
+                                    <?php }?>
                                     </tbody>
                                 </table>
                             </div>
