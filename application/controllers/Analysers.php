@@ -52,7 +52,7 @@ class Analysers extends CI_Controller {
     
         $analysers["website"] = $this->input->post('website');
         $this->analysers_model->add_brand($analysers);
-        $this->session->set_flashdata('msg', '<div class="alert alert-success col-xs-3"> Brand Added Successfully </div');
+        $this->session->set_flashdata('msg', '<div class="alert alert-success col-xs-3"> Brand Added Successfully </div>');
         redirect('analysers/add_brand');
         }
     }

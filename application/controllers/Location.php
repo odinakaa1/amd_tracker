@@ -29,10 +29,11 @@ class Location extends CI_Controller {
 		
 	{   
 		pageProtect();
-		$data['title'] = " All Locations";
+		$data['title'] = " All Facilities";
+		$data['facility'] =$this->location_model->list_facility();
         $this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/nav');
-        $this->load->view('all_tickets_view');
+        $this->load->view('all_facility_view');
         $this->load->view('templates/admin/footer');
 	}
 	

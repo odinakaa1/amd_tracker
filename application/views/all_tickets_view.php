@@ -22,7 +22,7 @@
                     </select>
                 </div>
             <button class="btn" >Search</button>
-            <i class="fa fa-plus fa-2x" style="margin-left: 2%;"></i><a>Create A ticket</a>
+            <i class="fa fa-plus fa-2x" style="margin-left: 2%;"></i><a href="<?php echo base_url('ticket/create_ticket')?>">Create A ticket</a>
                 <!-- /.col-lg-12 -->
             </div><br>
             <!-- /.row -->
@@ -44,128 +44,25 @@
                                             <th>Ticket Code</th>
                                             <th>Engrs</th>
                                             <th>Analyser</th>
-                                            <th>Location</th>
+                                          
                                             <th>Status</th>
                                             
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $i=0;foreach($tickets->result_array() as $row){  $i++;
+                                    list($fname, $lname) = user_name_from_id($row["engr_id"]);    
+                                    ?>
+                                   
                                         <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td><a href="tickets_more_info">X123454</a></td>
-                                            <td>Isaac Odinaka</td>
-                                            <td class="center">4</td> 
-                                            <td>UBTH - Benin</td>
+                                            <td><?php echo $i;?></td>
+                                            <td><a href="<?php echo base_url('ticket/tickets_more_info/')?><?php echo $row["id"];?>"><?php echo $row["code"];?></a></td>
+                                            <td><?php echo $fname." ".$lname;?></td>
+                                            <td class="center"><?php echo $row["analyser"];?></td> 
+                                           
                                             <td>Resolved</td>
                                         </tr>   
-                                        <tr class="odd gradeX">
-                                            <td>2</td>
-                                            <td><a href="tickets_more_info">X1263454</a></td>
-                                            <td>pepple</td>
-                                            <td class="center">4</td> 
-                                            <td>AKTH - Akure</td>
-                                            <td>Not Resolved</td>
-                                            
-                                        </tr> 
-                                        
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td><a href="tickets_more_info">X1234754</a></td>
-                                            <td>Gospel</td>
-                                            <td class="center">4</td> 
-                                            <td>LUTH - Lagos</td>
-                                            <td>Resolved</td>
-                                            
-                                        </tr>  
-                                        
-                                        <tr class="odd gradeX">
-                                            <td>3</td>
-                                            <td>X123<a href="tickets_more_info">X1237454</a>454</td>
-                                            <td>Shedrach</td>
-                                            <td class="center">4</td> 
-                                            <td>FMC - Katsina</td>
-                                            <td>Resolved</td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td><a href="/tickets_more_info">X12i3454</a></td>
-                                            <td>Oyoma</td>
-                                            <td class="center">4</td> 
-                                            <td>Gbagada</td>
-                                            <td>Not Resolved</td>
-                                        </tr>   
-                                        
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td><a href="tickets_more_info">X1235454</a></td>
-                                            <td>Carter</td>
-                                            <td class="center">4</td> 
-                                            <td>Crown Hospital</td>
-                                            <td>Resolved</td>
-                                        </tr>   
-
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td><a href="tickets_more_info">X1623454</a></td>
-                                            <td>Lolo Mari</td>
-                                            <td class="center">4</td> 
-                                            <td>Wellmed</td>
-                                            <td>Not Resolved</td>
-                                        </tr>   
-
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td><a href="tickets_more_info">X12i3454</a></td>
-                                            <td>Eliot</td>
-                                            <td class="center">4</td> 
-                                            <td>Eko</td>
-                                            <td>Not Resolved</td>
-                                        </tr>   
-
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td>X123455</td>
-                                            <td>Isaac Odinaka</td>
-                                            <td class="center">4</td> 
-                                            <td>Kupa</td>
-                                            <td>Not Resolved</td>
-                                        </tr>   
-
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td>X123456</td>
-                                            <td>Isaac Odinaka</td>
-                                            <td class="center">4</td> 
-                                            <td>Mollywood</td>
-                                            <td>Not Resolved</td>
-                                        </tr>   
-
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td>X123457</td>
-                                            <td>Pepple</td>
-                                            <td class="center">4</td> 
-                                            <td>R jollad</td>
-                                            <td>Not Resolved</td>
-                                        </tr>   
-
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td>X123458</td>
-                                            <td>Shittu</td>
-                                            <td class="center">4</td> 
-                                            <td>Delsuth</td>
-                                            <td>Not Resolved</td>
-                                        </tr>   
-
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td>X123459</td>
-                                            <td>Ola</td>
-                                            <td class="center">4</td> 
-                                            <td>Gbagada</td>
-                                            <td>Not Resolved</td>
-                                        </tr>   
+                                    <?php }?> 
                                     </tbody>
                                 </table>
                             </div>

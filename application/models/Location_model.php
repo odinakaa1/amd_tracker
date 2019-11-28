@@ -3,7 +3,7 @@ class Location_model extends CI_Model{
     public function __construct(){
         parent::__construct();
         $this->load->database();
-        $this->load->model('location_model');
+        
     }
 
     function add_country($country_name){
@@ -48,5 +48,10 @@ class Location_model extends CI_Model{
     function next_facility_auto_increament(){
     $query = $this->db->query( 'SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "amd_engrs" AND TABLE_NAME = "facility"');   
     return $query->row()->AUTO_INCREMENT;
+    }
+
+    function facility_name_from_code($code){
+        $query= $this->db->get_where('facility', array('facility_code'=>$code));
+        return $query->facility_name;
     }
 }

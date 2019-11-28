@@ -77,3 +77,57 @@ if ( ! function_exists('lga_name_from_id'))
 
 	
 }
+
+if ( ! function_exists('user_name_from_id'))
+{
+	function user_name_from_id($id)
+	{
+		$CI = get_instance();
+		$query = $CI->db->get_where('users', array('id'=>$id));
+		$fname = $query->row()->fname;
+		$lname = $query->row()->lname;
+		return array($fname, $lname);
+	}	
+}
+
+if ( ! function_exists('facility_name_from_code'))
+{	function facility_name_from_code($code)
+	{
+	$CI = get_instance();
+	$query= $CI->db->get_where('facility', array('facility_code'=>$code));
+	return $query->row()->facility_name;
+	
+	}
+}
+
+if ( ! function_exists('date_difference'))
+{	function date_difference($id)
+	{
+	$CI = get_instance();
+	$query= $CI->db->get_where('tickets', array('id'=>$id));
+	$date_object = date_create("", new DateTimeZone('Africa/Lagos')) ;
+	$datetime1 = new DateTime($query->row()->date_time);
+	$datetime2 = new DateTime();
+	$interval = $datetime1->diff($datetime2);
+	echo $interval->format('%m Month(s), %d Day(s) %H Hours, %i Minute(s), %s Second(s)');
+	   //$datetime2 = date_format($datetime2,"Y/m/d H:i:s");
+		//$difference = $date1->diff($datetime2); 
+  
+			//echo $difference->format('%R%h '); 
+	
+	
+	}
+}
+
+if ( ! function_exists('action_remarks'))
+{	function action_remarks($action_id)
+	{
+	$CI = get_instance();
+	return $query= $CI->db->get_where('action_remarks', array('action_id'=>$action_id));
+	   //$datetime2 = date_format($datetime2,"Y/m/d H:i:s");
+		//$difference = $date1->diff($datetime2); 
+  
+			//echo $difference->format('%R%h '); 	
+	}
+}
+
