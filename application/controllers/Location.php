@@ -19,6 +19,7 @@ class Location extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->database();
+		admin_protect();
 		$this->load->helper(array('form'));
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger col-lg-12"> ', '</div>');

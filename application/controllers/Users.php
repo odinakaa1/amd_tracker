@@ -36,7 +36,7 @@ class Users extends CI_Controller {
         else
         {
                 //$this->load->view('admin');
-                redirect('location');
+                redirect('ticket');
         }   
     }
     

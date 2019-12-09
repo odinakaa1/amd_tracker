@@ -280,57 +280,10 @@
                             <!-- /.nav-second-level -->
                         </li>
 
-                        <li>
-                            <a href="#"><i class="fa fa-map-marker fa-fw"></i> Manage Locations <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php  echo base_url('location/all_country')?>">Country</a>
-                                </li>
-
-                                <li> <a href="<?php  echo base_url('location/all_state')?>">State</a>
-                                </li>
-
-                                <li> <a href="<?php  echo base_url('location/all_lga')?>">LGA</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-
-                        <li>
-                            <a href="#"><i class="fa fa-building fa-fw"></i> Facilities<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php  echo base_url('location/all_facilities')?>">All Facilities</a>
-                                </li>
-
-                                <li> <a href="<?php  echo base_url('location/add_facility')?>">Add</a>
-                                </li>
-
-                                <li> <a href="<?php  echo base_url('location/all_lga')?>">Delete</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
                         
-                        <li>
-                            <a href="#"><i class="fa fa-microchip fa-fw""></i>Analysers <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                <a href="<?php echo base_url('analysers')?>">All Analysers</a>
-                                </li>
-                                <li>
-                                    
-                                    <a href="<?php echo base_url('analysers/all_brands')?>">Brands</a>
-                                </li>
-                                
-                                <li>
-                                    
-                                    <a href="<?php echo base_url('analysers/models')?>">Models</a>
-                                </li>
-                                
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+
+                        
+                       
                     </ul>
                     <!-- /#side-menu -->
                 </div>

@@ -19,10 +19,8 @@ if ( ! function_exists('admin_protect'))
 	{
 		//added on version 1.9
 		$CI = get_instance();
-		if($CI->session->user_id){
-			return TRUE;
-		}else{
-			return FALSE;
+		if(user_level_from_id($CI->session->user_id)!=0){
+			redirect("users");
 		}
 	}
 }	
@@ -130,4 +128,17 @@ if ( ! function_exists('action_remarks'))
 			//echo $difference->format('%R%h '); 	
 	}
 }
+
+if ( ! function_exists('user_level_from_id'))
+{
+	function user_level_from_id($id)
+	{
+		$CI = get_instance();
+		$query = $CI->db->get_where('users', array('id'=>$id));
+		return $level = $query->row()->level;
+		
+	}	
+}
+
+
 
